@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
 
   <body>
@@ -33,12 +34,10 @@
               Hi,<br />I'am <span class="warna">Ibrahim</span><br />
             </h1>
 
-            <p>
-              - I'm a Designer, Fotographer, Editor, Calon Web Development
-            </p>
+            <p>- I'm a Designer, Fotographer, Editor, Calon Web Development</p>
 
-            <a href="" class="tombol">lihat Project &#10145;</a>
-            <a href="" class="tombol">Hubungi Saya &#9742;</a>
+            <a href="#proyek" class="tombol">View the project &#10145;</a>
+            <a href="#kontak" class="tombol">Contact me  &#9742;</a>
           </div>
           <div class="foto">
             <img src="img/pp.png" alt="Foto Profil" class="foto-profil" />
@@ -124,26 +123,73 @@
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       <!-- PROJECT -->
-       <section class="project" id="proyek">
-       <div class="container">
-      <h2 class="title-project">Flagship Project</h2>
+      <section class="project" id="proyek">
+        <div class="container">
+          <h2 class="title-project">Flagship Project</h2>
 
-      <!-- Area untuk menampilkan project -->
-      <div id="gallery" class="gallery">
+          <div id="gallery" class="gallery"></div>
+        </div>
 
-      </div>
-    </div>
-    </section>
+        <!-- KONTAK -->
+      </section>
 
-    <section class="contact" id="kontak">
-      <div>
+      <section class="contact" id="kontak">
+        <h2 class="title-contact">Contact Me</h2>
+
+        <form action="https://formspree.io/f/xkgylayr" method="POST">
+          <div class="formnya">
+            <label>
+              Your Name:
+              <input type="text" name="name" placeholder="Enter your name" />
+            </label>
+            <label>
+              Your email:
+              <input type="email" name="email" placeholder="Enter your email" />
+            </label>
+          </div>
+          <label>
+            Your message:
+            <textarea
+              name="message"
+              placeholder="Enter your message"
+            ></textarea>
+          </label>
+          <!-- your other form fields go here -->
+          <button type="submit">Send Message</button>
+        </form>
+        
+      </section>
+
+      </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Bagian kiri: copyright sederhana -->
+        <div class="teks-footer">
+          <p>&copy; 2025 Ibrahim. All rights reserved.</p>
+        </div>
+
+        <!-- Bagian kanan: ikon sosial -->
+        
+          <div class="footer-social">
+            <a href="https://github.com/Ibrahim-SMAITHSI" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://instagram.com/himeru_thuatha_de/" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@Hmz_Studio01" target="_blank" rel="noopener" aria-label="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
         
       </div>
-    </section>
-    </main>
+
+    
+    </footer>
 
     <script src="portfolio.js"></script>
   </body>
