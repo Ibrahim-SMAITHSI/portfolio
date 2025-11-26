@@ -89,6 +89,7 @@ body {
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
 .kontainer-utama {
   display: flex;
   justify-content: space-between;
@@ -115,7 +116,7 @@ body {
 }
 
 /* Toggle theme button: lebih kecil tetapi konsisten dengan .tombol */
-.toggle-btn{
+.toggle-btn {
   padding: 8px;
   width: 44px;
   height: 44px;
@@ -127,8 +128,15 @@ body {
 }
 
 /* ketika body.light (terang) - opsi styling jika mau kebalikan */
-body.light .toggle-btn{ background-color: #f0f0f0; color: #111; }
-body.dark .toggle-btn{ background-color: rgba(255,255,255,0.06); color: #fff; }
+body.light .toggle-btn {
+  background-color: #f0f0f0;
+  color: #111;
+}
+
+body.dark .toggle-btn {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
 
 .bagian-satu {
   margin: 35px;
@@ -471,79 +479,76 @@ form button:hover {
   transform: scale(1.02);
 }
 
-.formnya{
+.formnya {
   display: flex;
   gap: 16px;
 }
-.formnya label{
+
+.formnya label {
   flex: 1;
 }
 
-
-
-
-
-
 /* --- FOOTER --- */
 .footer {
-    background-color: #1a1a1a;
-    color: #bbb; 
-    padding: 30px 0;
-    border-top: 3px solid blue;
+  background-color: #1a1a1a;
+  color: #bbb;
+  padding: 30px 0;
+  border-top: 3px solid blue;
 }
 
-  .footer-container{
-    max-width: 1100px; 
-    margin: 0 auto;    
-    padding: 0 20px;   
-    display: flex;     
-    justify-content: space-between; 
-    align-items: center; 
-    gap: 16px;        
-    flex-wrap: wrap;  
-  }
-
-  .teks-footer p{
-    margin: 0;        
-    color: #bbb;
-  }
-
-  .footer-social{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .footer-social a{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: rgba(255,255,255,0.04);
-    color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.15s ease, transform 0.12s ease;
-  }
-
-  .footer-social a:hover{
-    background: rgba(14,165,164,0.12);
-    transform: translateY(-3px);
-  }
-
-.social{ 
-  display:flex;
-  gap:12px;
-  align-items:center; 
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.social a{ 
-  color:white; 
-  font-size:24px; 
-  transition:transform .15s, color .15s; 
-}
-.social a:hover{ 
-  transform: translateY(-3px); 
-  color: #0ea5a4; 
-} 
 
+.teks-footer p {
+  margin: 0;
+  color: #bbb;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.footer-social a:hover {
+  background: rgba(14, 165, 164, 0.12);
+  transform: translateY(-3px);
+}
+
+.social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social a {
+  color: white;
+  font-size: 24px;
+  transition: transform .15s, color .15s;
+}
+
+.social a:hover {
+  transform: translateY(-3px);
+  color: #0ea5a4;
+}
