@@ -412,7 +412,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 760px; /* lebarkan form */
+  max-width: 760px;
   width: 100%;
   box-sizing: border-box;
   margin: auto;
