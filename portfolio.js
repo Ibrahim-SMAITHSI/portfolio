@@ -14,7 +14,7 @@ const project2 = {
   description:
     "Ini adalah simulasi sederhana dari lampu merah yang dibuat untuk memahami konsep dasar pemrograman menggunakan JavaScript.",
   image: "",
-  tags: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+  tags: [],
   link: "https://github.com/mahirdev/belajar-javascript/zakat-emas",
 };
 
@@ -45,6 +45,30 @@ const projectsLagi = [
     tags: ["HTML", "CSS", "JavaScript", "LocalStorage"],
     link: "https://github.com/Ibrahim-SMAITHSI/Kalkulator-zakat-emas/tree/main/lampu-lalu-lintas",
   },
+  {
+    title: "English Language",
+    description:
+    "This is my English project, where during this first semester I have made two posters about vocabulary and grammar, and one short movie video.",
+    image: "img/english.png",
+    link: "https://drive.google.com/drive/folders/1PT2VnfH-8a66nuhREJzRSsvkAftA1ZO1?usp=drive_link",
+    tags: ["English", "Poster Design", "Video Editing"]
+  },
+  {
+    title: "Nahwu",
+    description:
+    "This is my Nahwu project. During this first semester, I have learned how to I'rob on the Quran. I have also created one I'rob Al-Quran poster and one I'rob video.",
+    image: "img/kitab.png",
+    link: "https://drive.google.com/drive/folders/1tH0J0XSGepiMP9MEumQRHXGOLgZCZSf6?usp=drive_link",
+    tags: ["Nahwu", "I'rob", "Poster Design", "Video I'rob"]
+  },
+  {
+    title: "Fotographer",
+    description:
+    "This is a project I added myself. It is about my hobby, which is photography, and I have captured many good photos.",
+    image: "img/kamera.png",
+    link: "https://drive.google.com/drive/folders/1TL4lKB7GkRL1DNIsEI5i1lKCZW-icOLx?usp=drive_link",
+    tags: ["Photography", "Hobby", "Editing"]
+  }
 ];
 
 const gallery = document.getElementById("gallery");
@@ -63,7 +87,7 @@ for (let i = 0; i < projectsLagi.length; i++) {
     gambar.className = "project-img";
     card.appendChild(gambar);
   }
-
+  
   // --- KONTENNYA (JUDUL, DESKRIPSI) ---
   let title = document.createElement("h2");
   title.textContent = project.title;
@@ -74,6 +98,8 @@ for (let i = 0; i < projectsLagi.length; i++) {
   let contentDiv = document.createElement("div");
   contentDiv.className = "card-content";
   contentDiv.appendChild(title);
+
+
   contentDiv.appendChild(description);
   card.appendChild(contentDiv);
 

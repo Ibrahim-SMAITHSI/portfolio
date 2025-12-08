@@ -115,29 +115,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Toggle theme button: lebih kecil tetapi konsisten dengan .tombol */
-.toggle-btn {
-  padding: 8px;
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  font-size: 18px;
-}
-
-/* ketika body.light (terang) - opsi styling jika mau kebalikan */
-body.light .toggle-btn {
-  background-color: #f0f0f0;
-  color: #111;
-}
-
-body.dark .toggle-btn {
-  background-color: rgba(255, 255, 255, 0.06);
-  color: #fff;
-}
-
 .bagian-satu {
   margin: 35px;
 }
@@ -262,13 +239,11 @@ body.dark .toggle-btn {
 }
 
 .lightroom {
-  width: 350px;
   height: 150px;
   text-align: center;
 }
 
 .cc {
-  width: 350x;
   height: 145px;
   padding: 20px;
   display: block;
@@ -396,6 +371,31 @@ h3 {
 
 .project-link:hover {
   background-color: darkblue;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #0f4c81;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 420px) {
+  .tag {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
 }
 
 /* --- CONTACT! --- */
@@ -551,4 +551,152 @@ form button:hover {
 .social a:hover {
   transform: translateY(-3px);
   color: #0ea5a4;
+}
+
+
+@media (max-width: 950px) {
+  /* PENYESUAIAN UNTUK LAYAR TABLET */
+
+  /* Beranda */
+  .kontainer-utama {
+    flex-direction: column;
+    /* Tumpuk konten ke bawah */
+    align-items: center;
+    gap: 30px;
+  }
+
+  .foto {
+    order: -1;
+    /* Pindahkan foto ke atas teks */
+  }
+
+  .bagian-satu {
+    text-align: center;
+    margin: 0;
+  }
+
+  .foto-profil {
+    width: 250px;
+    height: 250px;
+    margin: 0;
+  }
+
+  /* About Me */
+  .about-me {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .foto-about {
+    padding: 0;
+  }
+
+  .foto-ku {
+    margin-bottom: 20px;
+  }
+
+  .isi-teks {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .nama-title {
+    padding: 0 20px;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 600px) {
+  /* PENYESUAIAN KRITIS UNTUK LAYAR HP */
+
+  /* Global */
+  .kontainer {
+    padding: 0 15px;
+  }
+
+  /* Header */
+  .header .kontainer {
+    flex-direction: column;
+    /* Tumpuk logo dan navigasi */
+    gap: 10px;
+  }
+
+  .nav ul {
+    gap: 15px;
+    flex-wrap: wrap;
+    /* Pastikan menu navigasi ke bawah jika terlalu banyak */
+    justify-content: center;
+  }
+
+  /* Judul Section */
+  .beranda h1 {
+    font-size: 32px;
+  }
+
+  .judul,
+  .teks-skills,
+  .title-project,
+  .title-contact {
+    font-size: 30px;
+    width: auto;
+    /* Biarkan lebar judul menyesuaikan konten */
+    padding: 0 15px 10px 15px;
+    /* Tambahkan padding agar ada jarak di samping */
+    width: fit-content;
+    /* Hanya selebar teks */
+  }
+
+  /* Skills: PERBAIKAN KRITIS */
+  .skill-utama {
+    grid-template-columns: repeat(2, 1fr);
+    /* Atur pasti 2 kolom */
+    gap: 10px;
+    /* Kurangi jarak antar kotak */
+    padding: 0 5px;
+  }
+
+  .logo {
+    width: 100%;
+    max-width: none;
+    height: 140px;
+    /* Ketinggian kotak logo lebih kecil */
+  }
+
+  /* Gambar di dalam kotak logo */
+  .img,
+  .lr,
+  .cc {
+    width: 60px;
+    /* Kecilkan ukuran gambar */
+    height: 60px;
+    padding: 5px;
+    margin: 5px auto 0 auto;
+  }
+
+  /* Teks skill */
+  .logo h3 {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  /* Project */
+  .gallery {
+    grid-template-columns: 1fr;
+    /* 1 kolom penuh di HP */
+    gap: 20px;
+  }
+
+  /* Contact Form: Tumpuk kolom Nama dan Email */
+  .formnya {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Footer */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
 }
