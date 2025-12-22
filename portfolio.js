@@ -24,7 +24,7 @@ const projectsLagi = [
   {
     title: "Kalkulator Zakat Emas",
     description:
-      "This is a simple interactive project, which is built using JavaScript to calculate Zakat and the data will be stored in LocalStorage.",
+      "Ini adalah proyek interaktif sederhana yang dibuat menggunakan JavaScript untuk menghitung Zakat, dan datanya akan disimpan di LocalStorage.",
     image: "img/kalkulator-zakat.png",
     tags: ["HTML", "CSS", "JavaScript", "LocalStorage"],
     link: "https://github.com/Ibrahim-SMAITHSI/Kalkulator-zakat-emas/tree/main/kalkulator%20zakat%20emas",
@@ -32,7 +32,7 @@ const projectsLagi = [
   {
     title: "Kalkulator ",
     description:
-      "This is my first interactive project, which is built using JavaScript to enable live calculation logic directly in the browser.",
+      "Ini adalah proyek interaktif pertama saya, yang dibuat menggunakan JavaScript untuk mengaktifkan logika kalkulasi langsung di dalam browser.",
     image: "img/kalkulator.png",
     tags: ["HTML", "CSS", "JavaScript", "LocalStorage"],
     link: "https://github.com/Ibrahim-SMAITHSI/Kalkulator-zakat-emas/tree/main/form-js-html/Calcuator",
@@ -40,7 +40,7 @@ const projectsLagi = [
   {
     title: "Lampu merah",
     description:
-      "This is a simple traffic light simulation created to understand fundamental programming concepts using JavaScript.",
+      "Ini adalah simulasi lampu lalu lintas sederhana yang dibuat untuk memahami konsep-konsep dasar pemrograman menggunakan JavaScript",
     image: "img/lampu-merah.png",
     tags: ["HTML", "CSS", "JavaScript", "LocalStorage"],
     link: "https://github.com/Ibrahim-SMAITHSI/Kalkulator-zakat-emas/tree/main/lampu-lalu-lintas",
@@ -48,7 +48,7 @@ const projectsLagi = [
   {
     title: "English Language",
     description:
-    "This is my English project, where during this first semester I have made two posters about vocabulary and grammar, and one short movie video.",
+      "Ini adalah proyek bahasa Inggris saya, di mana selama semester satu ini saya telah membuat dua poster tentang kosakata (vocabulary) dan tata bahasa (grammar), serta satu video film pendek.",
     image: "img/english.png",
     link: "https://drive.google.com/drive/folders/1PT2VnfH-8a66nuhREJzRSsvkAftA1ZO1?usp=drive_link",
     tags: ["English", "Poster Design", "Video Editing"]
@@ -56,7 +56,7 @@ const projectsLagi = [
   {
     title: "Nahwu",
     description:
-    "This is my Nahwu project. During this first semester, I have learned how to I'rob on the Quran. I have also created one I'rob Al-Quran poster and one I'rob video.",
+      "Ini adalah proyek Nahwu saya. Selama semester satu ini, saya telah mempelajari cara meng-i'rob Al-Qur'an. Saya juga telah membuat satu poster i'rob Al-Qur'an dan satu video i'rob.",
     image: "img/kitab.png",
     link: "https://drive.google.com/drive/folders/1tH0J0XSGepiMP9MEumQRHXGOLgZCZSf6?usp=drive_link",
     tags: ["Nahwu", "I'rob", "Poster Design", "Video I'rob"]
@@ -64,7 +64,7 @@ const projectsLagi = [
   {
     title: "Fotographer",
     description:
-    "This is a project I added myself. It is about my hobby, which is photography, and I have captured many good photos.",
+      "Ini adalah proyek yang saya tambahkan sendiri. Proyek ini tentang hobi saya, yaitu fotografi, dan saya telah mengambil banyak foto yang bagus.",
     image: "img/kamera.png",
     link: "https://drive.google.com/drive/folders/1TL4lKB7GkRL1DNIsEI5i1lKCZW-icOLx?usp=drive_link",
     tags: ["Photography", "Hobby", "Editing"]
@@ -87,7 +87,7 @@ for (let i = 0; i < projectsLagi.length; i++) {
     gambar.className = "project-img";
     card.appendChild(gambar);
   }
-  
+
   // --- KONTENNYA (JUDUL, DESKRIPSI) ---
   let title = document.createElement("h2");
   title.textContent = project.title;
