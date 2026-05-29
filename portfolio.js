@@ -77,7 +77,7 @@ for (let i = 0; i < projectsLagi.length; i++) {
   let project = projectsLagi[i];
 
   let card = document.createElement("div");
-  card.className = "card";
+  card.className = "card reveal";
 
   // --- GAMBAR ---
   if (project.image) {
@@ -114,3 +114,113 @@ for (let i = 0; i < projectsLagi.length; i++) {
 
   gallery.appendChild(card);
 }
+
+/* ============================================
+   LOADING SCREEN ANIMATION
+   ============================================ */
+window.addEventListener('load', function() {
+  const loadingScreen = document.getElementById('loadingScreen');
+  
+  // Tunggu 2 detik sebelum menghilangkan loading screen
+  setTimeout(function() {
+    loadingScreen.classList.add('hidden');
+  }, 2000);
+});
+
+/* ============================================
+   THEME TOGGLE (DARK / LIGHT)
+   ============================================ */
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-theme');
+  themeIcon.classList.replace('fa-moon', 'fa-sun');
+}
+
+themeToggle.addEventListener('click', function () {
+  document.body.classList.toggle('light-theme');
+  const isLight = document.body.classList.contains('light-theme');
+  themeIcon.classList.replace(isLight ? 'fa-moon' : 'fa-sun', isLight ? 'fa-sun' : 'fa-moon');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+/* ============================================
+   SCROLL REVEAL ANIMATION
+   ============================================ */
+
+// Function untuk check apakah element sudah visible
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+    rect.bottom >= 0
+  );
+}
+
+// Function untuk reveal elements
+function revealElements() {
+  const elementsToReveal = document.querySelectorAll('.reveal:not(.active)');
+  
+  elementsToReveal.forEach((element, index) => {
+    if (isElementInViewport(element)) {
+      // Tambah delay untuk stagger effect
+      setTimeout(() => {
+        element.classList.add('active');
+      }, index * 50);
+    }
+  });
+}
+
+// Trigger reveal on scroll with throttling
+let scrollTimeout;
+window.addEventListener('scroll', function() {
+  if (scrollTimeout) {
+    window.cancelAnimationFrame(scrollTimeout);
+  }
+  scrollTimeout = window.requestAnimationFrame(revealElements);
+});
+
+// Trigger reveal on load (untuk element yang sudah terlihat di awal)
+document.addEventListener('DOMContentLoaded', function() {
+  revealElements();
+  
+  /* ============================================
+     NAVBAR ACTIVE LINK ANIMATION
+     ============================================ */
+  const navLinks = document.querySelectorAll('.nav a');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Remove active class dari semua link
+      navLinks.forEach(l => l.classList.remove('active'));
+      
+      // Add active class ke link yang diklik
+      this.classList.add('active');
+    });
+  });
+  
+  // Set active link berdasarkan section saat scroll
+  window.addEventListener('scroll', function() {
+    let current = '';
+    
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      
+      if (scrollY >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      
+      // Match href dengan current section
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+});

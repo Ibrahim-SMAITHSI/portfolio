@@ -10,6 +10,16 @@
 </head>
 
 <body>
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <h1 class="loading-text">Himerudev</h1>
+      <div class="loading-bar-container">
+        <div class="loading-bar"></div>
+      </div>
+    </div>
+  </div>
+
   <header class="header">
     <div class="kontainer">
       <h2 class="nama">Portfolio</h2>
@@ -23,6 +33,9 @@
           <li><a href="#kontak">Contact</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
   </header>
 
@@ -30,17 +43,17 @@
     <!-- BERANDA -->
     <section class="beranda" id="beranda">
       <div class="kontainer-utama">
-        <div class="bagian-satu">
-          <h1 class="">
+        <div class="bagian-satu reveal">
+          <h1 class="reveal">
             Hi,<br />I'am <span class="warna">Ibrahim</span><br />
           </h1>
 
-          <p>- I'm a Designer, Fotographer, Editor, Calon Web Development</p>
+          <p class="reveal">- I'm a Designer, Fotographer, Editor, Calon Web Development</p>
 
-          <a href="#proyek" class="tombol">View the project &#10145;</a>
-          <a href="#kontak" class="tombol">Contact me &#9742;</a>
+          <a href="#proyek" class="tombol reveal">View the project &#10145;</a>
+          <a href="#kontak" class="tombol reveal">Contact me &#9742;</a>
         </div>
-        <div class="foto">
+        <div class="foto reveal">
           <img src="img/pp.png" alt="Foto Profil" class="foto-profil" />
         </div>
       </div>
@@ -48,14 +61,14 @@
 
     <!-- ABOUT ME -->
     <section class="tentang-ku" id="tentang">
-      <h2 class="judul">About</h2>
+      <h2 class="judul reveal">About</h2>
 
       <div class="about-me">
-        <div class="foto-about">
+        <div class="foto-about reveal">
           <img src="img/pp.png" alt="Foto About" class="foto-ku" />
         </div>
 
-        <div>
+        <div class="reveal">
           <h2 class="nama-title">I'am Ibrahim</h2>
           <p class="isi-teks">
             Halo semuanya! nama saya <strong> Ibrahim.</strong> Saya adalah seorang siswa di SMA IT HSI Boarding School.
@@ -69,41 +82,41 @@
 
     <section class="skill" id="skills">
       <div class="kontainer1">
-        <h2 class="teks-skills">My Skills</h2>
+        <h2 class="teks-skills reveal">My Skills</h2>
         <div class="skill-utama">
           <!-- HTML -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="img" />
             <h3>HTML</h3>
           </div>
           <!-- CSS -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" class="img" />
             <h3>CSS</h3>
           </div>
           <!-- JAVASCRIPT -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
               class="img" />
             <h3>JAVASCRIPT</h3>
           </div>
           <!-- CANVA -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" class="img" />
             <h3>CANVA</h3>
           </div>
           <!-- FIGMA -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" class="img" />
             <h3>FIGMA</h3>
           </div>
           <!-- LIGHTROOM -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="img/lr.png" alt="" class="lr" />
             <h3>LIGHTROOM</h3>
           </div>
           <!-- CAPCUT -->
-          <div class="logo">
+          <div class="logo reveal">
             <img src="img/capcut.png" alt="" class="cc" />
             <h3>CAPCUT</h3>
           </div>
@@ -114,7 +127,7 @@
     <!-- PROJECT -->
     <section class="project" id="proyek">
       <div class="container">
-        <h2 class="title-project">Flagship Project</h2>
+        <h2 class="title-project reveal">Flagship Project</h2>
 
         <div id="gallery" class="gallery"></div>
       </div>
@@ -123,9 +136,9 @@
     </section>
 
     <section class="contact" id="kontak">
-      <h2 class="title-contact">Contact Me</h2>
+      <h2 class="title-contact reveal">Contact Me</h2>
 
-      <form action="https://formspree.io/f/xkgylayr" method="POST">
+      <form action="https://formspree.io/f/xkgylayr" method="POST" class="reveal">
         <div class="formnya">
           <label>
             Your Name:
@@ -148,7 +161,7 @@
 
   </main>
 
-  <footer class="footer">
+  <footer class="footer reveal">
     <div class="footer-container">
       <!-- Bagian kiri: copyright sederhana -->
       <div class="teks-footer">
