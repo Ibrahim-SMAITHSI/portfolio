@@ -241,6 +241,10 @@ body {
   transform: scale(1.15);
 }
 
+.hamburger {
+  display: none;
+}
+
 /* TYPING ANIMATION */
 .typing-text {
   color: var(--accent-color);
@@ -627,61 +631,175 @@ form {
   border: 2px solid var(--form-border);
 }
 
-form label {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+/* Form Messages */
+.form-message {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  animation: slideDown 0.3s ease-out;
 }
 
-form input,
-form textarea {
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-message {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.success-message i {
+  font-size: 18px;
+}
+
+.error-message {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.error-message i {
+  font-size: 18px;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid var(--form-input-border);
+  border: 2px solid var(--form-input-border);
   background-color: var(--form-input-bg);
   color: var(--text-color);
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-form textarea {
-  min-height: 150px;
-}
-
-input:focus,
-textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 0 5px var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px rgba(0, 128, 255, 0.3);
 }
 
-form button {
-  margin-top: 30px;
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Error Text */
+.error-text {
+  font-size: 13px;
+  color: #ef4444;
+  display: none;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.form-group input.error ~ .error-text,
+.form-group textarea.error ~ .error-text {
+  display: block;
+}
+
+/* Character Count */
+.char-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: right;
+  margin-top: 2px;
+}
+
+/* Submit Button */
+.submit-btn {
+  margin-top: 20px;
   padding: 12px 20px;
   border-radius: 8px;
   border: none;
   background-color: var(--accent-color);
   color: var(--button-text);
-  font-size: 18px;
-  cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
 }
 
-form button:hover {
+.submit-btn:hover:not(:disabled) {
   background-color: var(--accent-hover);
   transform: scale(1.02);
 }
 
-.formnya {
-  display: flex;
-  gap: 16px;
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
-.formnya label {
-  flex: 1;
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-btn.loading .btn-text {
+  display: none;
+}
+
+.submit-btn.loading i {
+  animation: spin 1s linear infinite;
+}
+
+.submit-btn.loading:not(.btn-text) {
+  display: inline-block;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* --- FOOTER --- */
@@ -832,10 +950,30 @@ form button:hover {
     text-align: center;
   }
 
+  .nav {
+    display: none;
+    width: 100%;
+  }
+
+  .nav.active {
+    display: block;
+  }
+
   .nav ul {
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .hamburger {
+    display: flex;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
   }
 
   .theme-toggle {
@@ -929,9 +1067,33 @@ form button:hover {
   }
 
   /* Contact Form: Tumpuk kolom Nama dan Email */
-  .formnya {
-    flex-direction: column;
-    gap: 20px;
+  form {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .submit-btn i {
+    font-size: 14px;
   }
 
   /* Footer */
@@ -991,5 +1153,24 @@ form button:hover {
 
   .logo h3 {
     font-size: 12px;
+  }
+
+  /* Form for small screens */
+  form {
+    padding: 16px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px;
+  }
+
+  .form-message {
+    font-size: 13px;
+    padding: 12px 14px;
   }
 }

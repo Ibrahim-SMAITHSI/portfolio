@@ -116,8 +116,157 @@ for (let i = 0; i < projectsLagi.length; i++) {
 }
 
 /* ============================================
-   LOADING SCREEN ANIMATION
+   FORM VALIDATION & SUBMISSION
    ============================================ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+  const submitBtn = document.getElementById('submitBtn');
+  const successMessage = document.getElementById('successMessage');
+  const errorMessage = document.getElementById('errorMessage');
+  const errorText = document.getElementById('errorText');
+  const charCount = document.getElementById('charCount');
+
+  // Character count for message
+  messageInput.addEventListener('input', function() {
+    charCount.textContent = this.value.length;
+  });
+
+  // Input validation functions
+  const validateName = (value) => {
+    if (!value.trim()) return 'Name is required';
+    if (value.trim().length < 3) return 'Name must be at least 3 characters';
+    if (value.trim().length > 50) return 'Name must be less than 50 characters';
+    return '';
+  };
+
+  const validateEmail = (value) => {
+    if (!value.trim()) return 'Email is required';
+    const emailRegex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/i;
+    if (!emailRegex.test(value.trim())) return 'Please enter a valid email address';
+    return '';
+  };
+
+  const validateSubject = (value) => {
+    if (value.trim().length > 100) return 'Subject must be less than 100 characters';
+    return '';
+  };
+
+  const validateMessage = (value) => {
+    if (!value.trim()) return 'Message is required';
+    if (value.trim().length < 10) return 'Message must be at least 10 characters';
+    if (value.trim().length > 1000) return 'Message must be less than 1000 characters';
+    return '';
+  };
+
+  // Show error for specific field
+  const showError = (input, errorElement, message) => {
+    if (message) {
+      input.classList.add('error');
+      errorElement.textContent = message;
+    } else {
+      input.classList.remove('error');
+      errorElement.textContent = '';
+    }
+  };
+
+  // Real-time validation on input
+  nameInput.addEventListener('blur', function() {
+    const error = validateName(this.value);
+    showError(this, document.getElementById('nameError'), error);
+  });
+
+  emailInput.addEventListener('blur', function() {
+    const error = validateEmail(this.value);
+    showError(this, document.getElementById('emailError'), error);
+  });
+
+  subjectInput.addEventListener('blur', function() {
+    const error = validateSubject(this.value);
+    showError(this, document.getElementById('subjectError'), error);
+  });
+
+  messageInput.addEventListener('blur', function() {
+    const error = validateMessage(this.value);
+    showError(this, document.getElementById('messageError'), error);
+  });
+
+  // Form submission
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Clear previous messages
+    successMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
+
+    // Validate all fields
+    const nameError = validateName(nameInput.value);
+    const emailError = validateEmail(emailInput.value);
+    const subjectError = validateSubject(subjectInput.value);
+    const messageError = validateMessage(messageInput.value);
+
+    showError(nameInput, document.getElementById('nameError'), nameError);
+    showError(emailInput, document.getElementById('emailError'), emailError);
+    showError(subjectInput, document.getElementById('subjectError'), subjectError);
+    showError(messageInput, document.getElementById('messageError'), messageError);
+
+    // If there are errors, don't submit
+    if (nameError || emailError || subjectError || messageError) {
+      errorText.textContent = 'Please fix the errors above';
+      errorMessage.style.display = 'flex';
+      return;
+    }
+
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+
+    try {
+      // Submit form using Formspree
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Success
+        successMessage.style.display = 'flex';
+        contactForm.reset();
+        charCount.textContent = '0';
+        
+        // Clear error states
+        nameInput.classList.remove('error');
+        emailInput.classList.remove('error');
+        subjectInput.classList.remove('error');
+        messageInput.classList.remove('error');
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        // Error from server
+        errorText.textContent = 'Failed to send message. Please try again.';
+        errorMessage.style.display = 'flex';
+      }
+    } catch (error) {
+      // Network error or other error
+      errorText.textContent = 'Error sending message. Please check your connection and try again.';
+      errorMessage.style.display = 'flex';
+      console.error('Form submission error:', error);
+    } finally {
+      // Remove loading state
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    }
+  });
+});
 window.addEventListener('load', function() {
   const loadingScreen = document.getElementById('loadingScreen');
   
@@ -238,6 +387,17 @@ document.addEventListener('DOMContentLoaded', function() {
      ============================================ */
   const navLinks = document.querySelectorAll('.nav a');
   
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.querySelector('.nav');
+
+  hamburger.addEventListener('click', function () {
+    nav.classList.toggle('active');
+    const icon = this.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
+
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       // Remove active class dari semua link
@@ -245,6 +405,12 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Add active class ke link yang diklik
       this.classList.add('active');
+
+      // Tutup menu hamburger di mobile
+      nav.classList.remove('active');
+      const icon = hamburger.querySelector('i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
     });
   });
   
