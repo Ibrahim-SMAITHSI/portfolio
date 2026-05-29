@@ -327,19 +327,29 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ============================================
    THEME TOGGLE (DARK / LIGHT)
    ============================================ */
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle.querySelector('i');
+const themeToggles = document.querySelectorAll('.theme-toggle');
+
+function updateThemeIcons(isLight) {
+  themeToggles.forEach(toggle => {
+    const icon = toggle.querySelector('i');
+    if (icon) {
+      icon.classList.replace(isLight ? 'fa-moon' : 'fa-sun', isLight ? 'fa-sun' : 'fa-moon');
+    }
+  });
+}
 
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light-theme');
-  themeIcon.classList.replace('fa-moon', 'fa-sun');
+  updateThemeIcons(true);
 }
 
-themeToggle.addEventListener('click', function () {
-  document.body.classList.toggle('light-theme');
-  const isLight = document.body.classList.contains('light-theme');
-  themeIcon.classList.replace(isLight ? 'fa-moon' : 'fa-sun', isLight ? 'fa-sun' : 'fa-moon');
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+themeToggles.forEach(toggle => {
+  toggle.addEventListener('click', function () {
+    document.body.classList.toggle('light-theme');
+    const isLight = document.body.classList.contains('light-theme');
+    updateThemeIcons(isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
 });
 
 /* ============================================
