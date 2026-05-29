@@ -236,6 +236,10 @@ body {
   margin-left: 15px;
 }
 
+.theme-toggle.theme-mobile {
+  display: none;
+}
+
 .theme-toggle:hover {
   color: var(--accent-color);
   transform: scale(1.15);
