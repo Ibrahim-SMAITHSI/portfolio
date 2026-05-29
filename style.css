@@ -241,6 +241,28 @@ body {
   transform: scale(1.15);
 }
 
+/* TYPING ANIMATION */
+.typing-text {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: var(--accent-color);
+  font-weight: 700;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 /* BAGIAN BERANDA */
 
 .beranda {
@@ -699,7 +721,7 @@ form button:hover {
   width: 36px;
   height: 36px;
   background: rgba(255, 255, 255, 0.04);
-  color: #fff;
+  color: var(--text-color);
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.15s ease, transform 0.12s ease;
@@ -708,6 +730,14 @@ form button:hover {
 .footer-social a:hover {
   background: rgba(14, 165, 164, 0.12);
   transform: translateY(-3px);
+}
+
+.light-theme .footer-social a {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.light-theme .footer-social a:hover {
+  background: rgba(14, 165, 164, 0.15);
 }
 
 .social {
@@ -724,7 +754,7 @@ form button:hover {
 
 .social a:hover {
   transform: translateY(-3px);
-  color: #0ea5a4;
+  color: var(--accent-color);
 }
 
 

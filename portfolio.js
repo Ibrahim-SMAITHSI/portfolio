@@ -128,6 +128,54 @@ window.addEventListener('load', function() {
 });
 
 /* ============================================
+   TYPING ANIMATION
+   ============================================ */
+const professions = ['Designer', 'Fotographer', 'Editor', 'Calon Web Development'];
+const typingText = document.getElementById('typingText');
+let professionIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let isPaused = false;
+
+function typeEffect() {
+  const current = professions[professionIndex];
+
+  if (isPaused) {
+    setTimeout(typeEffect, 1500);
+    isPaused = false;
+    return;
+  }
+
+  if (!isDeleting) {
+    typingText.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+
+    if (charIndex === current.length) {
+      isPaused = true;
+      isDeleting = true;
+      setTimeout(typeEffect, 2000);
+      return;
+    }
+    setTimeout(typeEffect, 80 + Math.random() * 60);
+  } else {
+    typingText.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;
+      professionIndex = (professionIndex + 1) % professions.length;
+      setTimeout(typeEffect, 400);
+      return;
+    }
+    setTimeout(typeEffect, 40 + Math.random() * 30);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(typeEffect, 1000);
+});
+
+/* ============================================
    THEME TOGGLE (DARK / LIGHT)
    ============================================ */
 const themeToggle = document.getElementById('themeToggle');
